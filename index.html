@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NLP AI Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span class="logo-text">NLP ChatBot</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div class="new-chat-btn-wrapper">
+      <button class="new-chat-btn" id="newChatBtn">
+        <i class="fa-solid fa-plus"></i>
+        <span>New Conversation</span>
+      </button>
+    </div>
+
+    <nav class="chat-history" id="chatHistory">
+      <p class="history-label">Recent</p>
+      <!-- dynamically populated -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">U</div>
+        <div class="user-meta">
+          <span class="user-name">Guest User</span>
+          <span class="user-role">Free Plan</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="chat-main" id="chatMain">
+
+    <!-- Header -->
+    <header class="chat-header">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="header-title">
+        <div class="status-dot"></div>
+        <span>AI Assistant</span>
+        <span class="header-badge">NLP Powered</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="clearBtn" title="Clear chat">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Welcome Screen -->
+    <section class="welcome-screen" id="welcomeScreen">
+      <div class="welcome-content">
+        <div class="welcome-icon"><i class="fa-solid fa-robot"></i></div>
+        <h1>Hello, I'm your AI Assistant</h1>
+        <p>Powered by NLP & Machine Learning. Ask me anything — I understand context, intent, and natural language.</p>
+        <div class="suggestion-grid">
+          <button class="suggestion-card" onclick="sendSuggestion('What is Natural Language Processing?')">
+            <i class="fa-solid fa-brain"></i>
+            <span>What is Natural Language Processing?</span>
+          </button>
+          <button class="suggestion-card" onclick="sendSuggestion('How does machine learning work?')">
+            <i class="fa-solid fa-microchip"></i>
+            <span>How does machine learning work?</span>
+          </button>
+          <button class="suggestion-card" onclick="sendSuggestion('Explain deep learning with examples')">
+            <i class="fa-solid fa-network-wired"></i>
+            <span>Explain deep learning with examples</span>
+          </button>
+          <button class="suggestion-card" onclick="sendSuggestion('What can you help me with?')">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>What can you help me with?</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Messages Container -->
+    <section class="messages-container" id="messagesContainer"></section>
+
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" id="typingIndicator" hidden>
+      <div class="typing-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="typing-bubble">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <footer class="input-area">
+      <div class="input-wrapper">
+        <div class="input-box" id="inputBox">
+          <textarea
+            id="userInput"
+            placeholder="Type your message here..."
+            rows="1"
+            aria-label="Message input"
+          ></textarea>
+          <div class="input-actions">
+            <button class="attach-btn" title="Attach file (coming soon)" disabled>
+              <i class="fa-solid fa-paperclip"></i>
+            </button>
+            <button class="send-btn" id="sendBtn" aria-label="Send message">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+        <p class="input-hint">AI may make mistakes. Verify important information.</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- NLP Info Panel (slide-in) -->
+  <div class="nlp-panel" id="nlpPanel" hidden>
+    <div class="nlp-panel-header">
+      <span>NLP Analysis</span>
+      <button onclick="document.getElementById('nlpPanel').hidden=true"><i class="fa-solid fa-x"></i></button>
+    </div>
+    <div class="nlp-panel-body" id="nlpPanelBody"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
